@@ -27,6 +27,7 @@ Should work on any platform where Chef runs. Tested on Ubuntu.
 * `notify` - toggles whether or not users in the room should be notified by this message (defaults to true).
 * `color` - sets the color of the message in HipChat. Supported colors include: yellow, red, green, purple, or random (defaults to yellow).
 * `failure_ok` - toggles whether or not to catch the exception if an error is encountered connecting to HipChat (defaults to true).
+* `server_url` - Specify if you have self-hosted HipChat Server
 
 ## Usage example
 
@@ -41,6 +42,11 @@ Should work on any platform where Chef runs. Tested on Ubuntu.
         end
 
 ## Changes
+
+### 0.4.0
+* Added support for self-hosted HipChat Server via server_url attribute
+* Bolded the hostname in handler exception messages
+* Changed HipChat Ruby gem to 1.3.0
 
 ### 0.2.0
 * Added test-kitchen. Export HIPCHAT_TEST_ROOM and HIPCHAT_TEST_TOKEN env vars when running test-kitchen

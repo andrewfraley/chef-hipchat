@@ -47,9 +47,14 @@ module HipChat
     end
 
     def report
-      msg = "Failure on #{node.name}: #{run_status.formatted_exception}"
+      msg = "Failure on <strong>#{node.name}</strong>: #{run_status.formatted_exception}"
 
-      client = HipChat::Client.new(@api_token)
+      if @options[:server_url]
+        client = HipChat::Client.new(@api_token, :api_version => 'v2', :server_url => @options[:server_url])
+      else
+        client = HipChat::Client.new(@api_token)
+      end
+      
       client[@room_name].send(
         @options[:name],
         msg,

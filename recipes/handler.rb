@@ -41,7 +41,8 @@ handler = node['hipchat']['handler']
 handler_options = {
   :name => handler['name'],
   :notify_users => handler['notify_users'],
-  :color => handler['color']
+  :color => handler['color'],
+  :server_url => node['hipchat']['server_url']
 }
 
 chef_handler 'HipChat::NotifyRoom' do

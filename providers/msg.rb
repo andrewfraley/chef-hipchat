@@ -1,8 +1,12 @@
 action :speak do
   require 'hipchat'
   begin
-    client = HipChat::Client.new(@new_resource.token)
-
+    if node['hipchat']['server_url']
+      client = HipChat::Client.new(@new_resource.token, :api_version => 'v2', :server_url => node['hipchat']['server_url'])
+    else
+      client = HipChat::Client.new(@new_resource.token)
+    end
+    
     message = @new_resource.message || @new_resource.name
 
     client[@new_resource.room].send(@new_resource.nickname,
